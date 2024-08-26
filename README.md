@@ -18,8 +18,21 @@ Beenefits:
 - Auto update: RAG reduces the need for users to continuously train the model on new data and update its parameters based on the given conditions.
 -->
 
+![Interface](https://github.com/MartinezAgullo/GenAI_5_SummariseData/blob/main/PersonalDataAsistant.jpg)
+
+
+# Download the code
 Original code from[build_own_chatbot_without_open_ai](https://github.com/sinanazeri/build_own_chatbot_without_open_ai.git).  Download it with:
 
-> git clone
-> https://github.com/sinanazeri/build_own_chatbot_without_open_ai.git
+> git clone https://github.com/sinanazeri/build_own_chatbot_without_open_ai.git
+> mv build_own_chatbot_without_open_ai build_chatbot_for_your_data
+> cd build_chatbot_for_your_data
+> pip install -r requirements.txt
 
+# Execution
+> python3 server.py
+
+
+#  Bot Architecture diagram
+![DocumentProcessing](https://github.com/MartinezAgullo/GenAI_5_SummariseData/blob/main/document_processing.jpg)
+Original picture  from [Satish Srinivasan](https://www.linkedin.com/in/satish-srinivasan-209b605a/?lipi=urn%3Ali%3Apage%3Ad_flagship3_pulse_read%3B8VYOM%2FAVTx6NgCBWwwwCzw%3D%3D)

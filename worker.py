@@ -21,15 +21,17 @@ chat_history = []
 llm_hub = None
 embeddings = None
 
-Watsonx_API = "Your WatsonX API"
-Project_id= "Your Project ID"
+Watsonx_API = ""
+Project_id= "skills-network"
 
-# Function to initialize the language model and its embeddings
+####
+# init_llm() : Function to initialize the language model and its embeddings
+####
 def init_llm():
     global llm_hub, embeddings
     
     params = {
-        GenParams.MAX_NEW_TOKENS: 250, # The maximum number of tokens that the model can generate in a single run.
+        GenParams.MAX_NEW_TOKENS: 500, # The maximum number of tokens that the model can generate in a single run.
         GenParams.MIN_NEW_TOKENS: 1,   # The minimum number of tokens that the model should generate in a single run.
         GenParams.DECODING_METHOD: DecodingMethods.SAMPLE, # The method used by the model for decoding/generating new tokens. In this case, it uses the sampling method.
         GenParams.TEMPERATURE: 0.1,   # A parameter that controls the randomness of the token generation. A lower value makes the generation more deterministic, while a higher value introduces more randomness.
@@ -50,20 +52,20 @@ def init_llm():
 
     llm_hub = WatsonxLLM(model=LLAMA2_model)
 
-    #Initialize embeddings using a pre-trained model to represent the text data.
-    embeddings =  # create object of Hugging Face Instruct Embeddings with (model_name,  model_kwargs={"device": DEVICE} )
+    embeddings = HuggingFaceInstructEmbeddings(
+        model_name="sentence-transformers/all-MiniLM-L6-v2", model_kwargs={"device": DEVICE}
+    )
 
 # Function to process a PDF document
 def process_document(document_path):
     global conversation_retrieval_chain
+    
     # Load the document
-    loader =   # ---> use PyPDFLoader and document_path from the function input parameter <---
-    
+    loader = PyPDFLoader(document_path)
     documents = loader.load()
-    # Split the document into chunks, set chunk_size=1024, and chunk_overlap=64. assign it to variable text_splitter
-    text_splitter = # ---> use Recursive Character TextSplitter and specify the input parameters <---
-    
-    texts = text_splitter.split_documents(documents)
+    # Split the document into chunks
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1024, chunk_overlap=64)
+    texts = text_splitter.split_documents(document
     
     # Create an embeddings database using Chroma from the split text chunks.
     db = Chroma.from_documents(texts, embedding=embeddings)
