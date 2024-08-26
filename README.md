@@ -18,7 +18,7 @@ Beenefits:
 - Auto update: RAG reduces the need for users to continuously train the model on new data and update its parameters based on the given conditions.
 -->
 
-![Interface](https://github.com/MartinezAgullo/GenAI_5_SummariseData/blob/main/PersonalDataAsistant.jpg)
+![Interface](https://github.com/MartinezAgullo/GenAI_5_SummariseData/blob/main/PersonalDataAsistant.png)
 
 
 # Download the code
