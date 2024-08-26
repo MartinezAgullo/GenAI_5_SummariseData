@@ -56,7 +56,11 @@ def init_llm():
         model_name="sentence-transformers/all-MiniLM-L6-v2", model_kwargs={"device": DEVICE}
     )
 
-# Function to process a PDF document
+####
+# process_document() :: Function to process a PDF document. It uses the PyPDFLoader to load the document, 
+#                       splits the document into chunks using the RecursiveCharacterTextSplitter, and then 
+#                       creates a vector store (Chroma) from the document chunks using the language model embeddings.
+####
 def process_document(document_path):
     global conversation_retrieval_chain
     
@@ -75,25 +79,27 @@ def process_document(document_path):
         llm=llm_hub,
         chain_type="stuff",
         retriever= db.as_retriever(search_type="mmr", search_kwargs={'k': 6, 'lambda_mult': 0.25}),
-        return_source_documents=False
+        return_source_documents=False,
+        input_key = "question"
+     #   chain_type_kwargs={"prompt": prompt} # if you are using prompt template, you need to uncomment this part
     )
 
-
-# Function to process a user prompt
+####
+# process_prompt () :: Function to process a user prompt. Retrieves a response 
+#                      based on the contents of the previously processed PDF document, 
+#                      and maintains a chat history.
+####
 def process_prompt(prompt):
     global conversation_retrieval_chain
     global chat_history
-    # Pass the prompt and the chat history to the conversation_retrieval_chain object
+    
+    # Query the model
     output = conversation_retrieval_chain({"question": prompt, "chat_history": chat_history})
-    
-    answer =  output["result"]
-    
+    answer = output["result"]
     # Update the chat history
-    # TODO: Append the prompt and the bot's response to the chat history using chat_history.append and pass `prompt` `answer` as arguments
-    # --> write your code here <--	
-    
-    # Return the model's response
-    return result['answer']
+    chat_history.append((prompt, answer))
+    # Return the model\'s response
+    return answer
     
 
 # Initialize the language model
