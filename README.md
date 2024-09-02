@@ -38,4 +38,4 @@ Original code from [build_own_chatbot_without_open_ai](https://github.com/sinana
 Original picture  from [Satish Srinivasan](https://www.linkedin.com/in/satish-srinivasan-209b605a/?lipi=urn%3Ali%3Apage%3Ad_flagship3_pulse_read%3B8VYOM%2FAVTx6NgCBWwwwCzw%3D%3D)
 
 ## Credits
-This repository contains solutions and work done for the fifth module of the course[Building Generative AI-Powered Applications with Python](https://www.coursera.org/learn/building-gen-ai-powered-applications). All rights and credits go to the course creators and instructors. This work is shared for personal use and academic purposes only.
+This repository contains solutions and work done for the fifth module of the course [Building Generative AI-Powered Applications with Python](https://www.coursera.org/learn/building-gen-ai-powered-applications). All rights and credits go to the course creators and instructors. This work is shared for personal use and academic purposes only.
