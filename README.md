@@ -22,7 +22,7 @@ Beenefits:
 
 
 # Download the code
-Original code from[build_own_chatbot_without_open_ai](https://github.com/sinanazeri/build_own_chatbot_without_open_ai.git).  Download it with:
+Original code from [build_own_chatbot_without_open_ai](https://github.com/sinanazeri/build_own_chatbot_without_open_ai.git).  Download it with:
 
 > git clone https://github.com/sinanazeri/build_own_chatbot_without_open_ai.git
 > mv build_own_chatbot_without_open_ai build_chatbot_for_your_data
